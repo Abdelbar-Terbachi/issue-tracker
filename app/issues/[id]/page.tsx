@@ -4,6 +4,7 @@ import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 import { NextResponse } from "next/server";
 import React from "react";
+import ReactMarkdown from "react-markdown";
 
 interface Props {
   params: { id: string };
@@ -24,8 +25,8 @@ const IssueDetailPage = async ({ params }: Props) => {
         <IssueStatusComponent status={issue.status} />
         <Text>{issue.createdAt.toDateString()}</Text>
       </Flex>
-      <Card className="max-w-xl">
-        <p>{issue.description}</p>
+      <Card className="max-w-xl prose ">
+        <ReactMarkdown>{issue.description}</ReactMarkdown>
       </Card>
     </div>
   );
