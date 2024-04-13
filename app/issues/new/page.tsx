@@ -11,10 +11,11 @@ import { createIssueSchema } from "@/app/validationSchemas";
 import { z } from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
+import delay from "delay";
 
 type IssueForm = z.infer<typeof createIssueSchema>;
 
-const NewIssuePage = () => {
+const NewIssuePage = async () => {
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
@@ -26,6 +27,7 @@ const NewIssuePage = () => {
   } = useForm<IssueForm>({
     resolver: zodResolver(createIssueSchema),
   });
+  await delay(2000);
 
   const onSubmit = handleSubmit(async (data) => {
     try {
