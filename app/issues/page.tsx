@@ -1,9 +1,7 @@
 import prisma from "@/prisma/client";
 import { Table } from "@radix-ui/themes";
-import Link from "../components/Link";
-import React from "react";
 import IssueStatusComponent from "../components/IssueStatusComponent";
-import delay from "delay";
+import Link from "../components/Link";
 import IssueActions from "./_components/IssueActions";
 
 const IssuesPage = async () => {
@@ -46,4 +44,5 @@ const IssuesPage = async () => {
   );
 };
 
+export const dynamic = "force-dynamic";
 export default IssuesPage;
