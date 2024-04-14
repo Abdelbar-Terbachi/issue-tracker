@@ -39,7 +39,7 @@ export async function DELETE(
   if (!issue)
     return NextResponse.json(
       { error: "The issue does not exist!" },
-      { status: 400 }
+      { status: 404 }
     );
 
   await prisma.issue.delete({
