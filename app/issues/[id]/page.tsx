@@ -1,11 +1,8 @@
-import IssueStatusComponent from "@/app/components/IssueStatusComponent";
 import prisma from "@/prisma/client";
-import { Box, Card, Flex, Heading, Text, Grid, Button } from "@radix-ui/themes";
-import Link from "next/link";
+import { Box, Grid } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
-import { Pencil2Icon } from "@radix-ui/react-icons";
-import React from "react";
-import ReactMarkdown from "react-markdown";
+import EditIssueButton from "../EditIssueButton";
+import IssueDetails from "../IssueDetails";
 
 interface Props {
   params: { id: string };
@@ -22,20 +19,10 @@ const IssueDetailPage = async ({ params }: Props) => {
   return (
     <Grid columns={{ initial: "1", md: "2" }} gap="5">
       <Box>
-        <Heading>{issue.title}</Heading>
-        <Flex gap="4" my="4">
-          <IssueStatusComponent status={issue.status} />
-          <Text>{issue.createdAt.toDateString()}</Text>
-        </Flex>
-        <Card className="max-w-xl prose ">
-          <ReactMarkdown>{issue.description}</ReactMarkdown>
-        </Card>
+        <IssueDetails issue={issue} />
       </Box>
       <Box>
-        <Button>
-          <Pencil2Icon />
-          <Link href={`/issues/${issue.id}/edit`}>Edit Issue</Link>
-        </Button>
+        <EditIssueButton issueId={issue.id} />
       </Box>
     </Grid>
   );
