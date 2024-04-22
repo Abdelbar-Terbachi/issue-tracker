@@ -14,12 +14,16 @@ import {
 } from "recharts";
 
 interface Props {
-  open: number;
-  inProgress: number;
-  closed: number;
+  data: {
+    open: number;
+    inProgress: number;
+    closed: number;
+  };
 }
 
-const BarChart: React.FC<Props> = ({ open, inProgress, closed }: Props) => {
+const BarChart: React.FC<Props> = ({
+  data: { open, inProgress, closed },
+}: Props) => {
   const data = [
     { label: "Open", value: open },
     { label: "In Progress", value: inProgress },
